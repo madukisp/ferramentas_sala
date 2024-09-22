@@ -1,155 +1,10 @@
-<html><head><base href="https://websim.creation.engine/ubs-checklist-email-generator/">
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gerador de Cobrança para UBS</title>
-<style>
-    :root {
-        --primary: #6C63FF;
-        --secondary: #FF6584;
-        --tertiary: #4CAF50;
-        --quaternary: #FFC107;
-        --quinary: #03A9F4;
-        --senary: #9C27B0;
-    }
-    body {
-        font-family: 'Arial', sans-serif;
-        line-height: 1.6;
-        color: var(--primary);
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 20px;
-        background-color: #f4f7f9;
-        transition: background-color 0.3s, color 0.3s;
-    }
-    h1, h2 {
-        color: var(--primary);
-    }
-    .container {
-        display: flex;
-        gap: 20px;
-    }
-    .checklist-column {
-        flex: 1;
-        background-color: #fff;
-        border-radius: 8px;
-        padding: 20px;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-    ul {
-        list-style-type: none;
-        padding: 0;
-    }
-    li {
-        background-color: #ecf0f1;
-        margin: 10px 0;
-        padding: 10px;
-        border-radius: 4px;
-        cursor: pointer;
-        transition: background-color 0.3s;
-    }
-    li:hover {
-        background-color: #d5dbdb;
-    }
-    li.checked {
-        text-decoration: line-through;
-        color: #7f8c8d;
-        background-color: #bdc3c7;
-    }
-    .summary {
-        margin-top: 20px;
-        padding: 15px;
-        background-color: var(--quinary);
-        color: #fff;
-        border-radius: 4px;
-    }
-    #email-generator {
-        background-color: #fff;
-        border-radius: 8px;
-        padding: 20px;
-        margin-top: 20px;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-    textarea {
-        width: 100%;
-        height: 200px;
-        margin-bottom: 10px;
-        padding: 10px;
-        border: 1px solid #ddd;
-        border-radius: 4px;
-        resize: vertical;
-    }
-    button {
-        background-color: var(--tertiary);
-        color: white;
-        border: none;
-        padding: 10px 20px;
-        border-radius: 4px;
-        cursor: pointer;
-        transition: background-color 0.3s;
-    }
-    button:hover {
-        background-color: var(--quaternary);
-    }
-    #email-list {
-        margin-top: 20px;
-        background-color: #f9f9f9;
-        padding: 15px;
-        border-radius: 4px;
-    }
-    body.dark-mode {
-        background-color: #121212;
-        color: var(--secondary);
-    }
-    .dark-mode .checklist-column,
-    .dark-mode #email-generator {
-        background-color: #1e1e1e;
-        box-shadow: 0 2px 4px rgba(255,255,255,0.1);
-    }
-    .dark-mode li {
-        background-color: #2c2c2c;
-    }
-    .dark-mode li:hover {
-        background-color: #3c3c3c;
-    }
-    .dark-mode li.checked {
-        color: #a0a0a0;
-        background-color: #404040;
-    }
-    .dark-mode .summary {
-        background-color: var(--primary);
-    }
-    .dark-mode textarea,
-    .dark-mode input[type="checkbox"] {
-        background-color: #2c2c2c;
-        color: #e0e0e0;
-        border-color: #444;
-    }
-    .dark-mode button {
-        background-color: var(--senary);
-    }
-    .dark-mode button:hover {
-        background-color: var(--quaternary);
-    }
-    .whatsapp-button {
-        display: inline-block;
-        background-color: var(--tertiary);
-        color: white;
-        padding: 10px 15px;
-        margin: 5px;
-        border-radius: 5px;
-        text-decoration: none;
-        transition: background-color 0.3s;
-    }
-    .whatsapp-button:hover {
-        background-color: var(--quaternary);
-    }
-    .dark-mode .whatsapp-button {
-        background-color: var(--senary);
-    }
-    .dark-mode .whatsapp-button:hover {
-        background-color: var(--quaternary);
-    }
-</style>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de Cobrança para UBS</title>
+    <link rel="stylesheet" href="../assets/css/checklist.css">
 </head>
 <body>
     <h1>Gerador de Cobrança para UBS</h1>
@@ -233,198 +88,29 @@
             <label for="email-list3">Email do RT de Enfermagem</label>
         </div>
         <textarea id="email-template" placeholder="Digite o modelo de e-mail aqui. Use [UBS_LIST] para a lista de UBS."></textarea>
+        
+        <!-- Botão para gerar e copiar o conteúdo do e-mail -->
         <button onclick="generateEmails()">Gerar E-mails</button>
-        <div id="email-list"></div>
+        
+        <!-- Botão para copiar o conteúdo do e-mail -->
+        <button id="copyEmailBtn" onclick="copyEmail()">Copiar E-mail</button>
+    
+        <!-- Bloco de código para mostrar o conteúdo do e-mail -->
+        <div id="email-list">
+            <h3>Conteúdo do E-mail:</h3>
+            <pre><code id="email-content"></code></pre>
+        </div>
     </div>
+    
 
-    <div id="whatsapp-generator">
+    <!-- <div id="whatsapp-generator">
         <h2>Gerador de Mensagem WhatsApp</h2>
         <textarea id="whatsapp-template" placeholder="Digite o modelo de mensagem WhatsApp aqui."></textarea>
         <button onclick="generateWhatsApp()">Gerar Mensagem WhatsApp</button>
         <div id="whatsapp-list"></div>
-        <div id="whatsapp-buttons"></div>
-    </div>
+        <div id="whatsapp-buttons"></div> -->
+    <!-- </div> -->
 
-    <script>
-        document.body.classList.add('dark-mode');
-
-        const emailMap = {
-            "UBS Alcina Pimentel Piza": "ubsalcinapimentel@saudedafamilia.org",
-            "UBS Anchieta": "ubs.jardimanchieta@saudedafamilia.org",
-            "UBS Autódromo": "ubs.autodromo@saudedafamilia.org",
-            "UBS Cantinho do Céu": "ubscantinhodoceu@saudedafamilia.org",
-            "UBS Chácara do Conde": "ubschacaradoconde@saudedafamilia.org",
-            "UBS Chácara do Sol": "ubs.chacaradosol.adm@saudedafamilia.org",
-            "UBS Chácara Santo Amaro": "ubschacarasantoamaro@saudedafamilia.org",
-            "UBS Dr. Sérgio Chaddad": "ubs.sergiochaddad@saudedafamilia.org",
-            "UBS Gaivotas": "ubsgaivotas@saudedafamilia.org",
-            "UBS Jardim Cliper": "ubs.jardimcliper.adm@saudedafamilia.org",
-            "UBS Jardim Eliane": "ubsjardimeliane@saudedafamilia.org",
-            "UBS Jardim Icaraí Quintana": "ubsjardimicaraiquintana@saudedafamilia.org",
-            "UBS Jardim Lucélia Sandra Ap Barbosa Correia Lima": "ubs.jardimlucelia@saudedafamilia.org",
-            "UBS Jardim Novo Horizonte": "ubsnovohorizonte@saudedafamilia.org, emad.jardimnovohorizonte.rh@saudedafamilia.org",
-            "UBS Jardim Orion/Guanhembu": "ubs.orion.rh@saudedafamilia.org",
-            "UBS Jardim Reimberg": "ubs.jdreimberg@saudedafamilia.org",
-            "UBS Jardim República": "ubs.jardimrepublica@saudedafamilia.org",
-            "UBS Jardim São Bernardo": "ubs.jdsaobernardo@saudedafamilia.org",
-            "UBS Jardim Três Corações": "ubsjardimtrescoracoes@saudedafamilia.org",
-            "UBS Jordanópolis": "ubsjordanopolis@saudedafamilia.org",
-            "UBS Parque Residencial Cocaia": "ubsprcocaia@saudedafamilia.org",
-            "UBS Shangrilá Ellus": "ubs.shangrilaellus@saudedafamilia.org",
-            "UBS Varginha": "ubsvarginha@saudedafamilia.org",
-            "UBS Veleiros": "ubs.veleiros@saudedafamilia.org",
-            "UBS Vila Natal": "ubsvilanatal@saudedafamilia.org",
-            "UBS Barragem": "ubs.barragem.adm@saudedafamilia.org",
-            "UBS Colônia": "ubscolonia@saudedafamilia.org",
-            "UBS Dom Luciano Bergamin": "ubsdomluciano@saudedafamilia.org",
-            "UBS Jardim Campinas": "ubs.jardimcampinas@saudedafamilia.org",
-            "UBS Jardim das Fontes": "ubsjardimdasfontes@saudedafamilia.org",
-            "UBS Jardim Embura": "ubsembura@saudedafamilia.org",
-            "UBS Jardim Iporã": "ubsjardimipora@saudedafamilia.org",
-            "UBS Jardim Santa Fé": "ubsjardimsantafe@saudedafamilia.org",
-            "UBS Jardim São Norberto": "ubs.jardimsaonorberto@saudedafamilia.org",
-            "UBS Jardim Silveira": "ubsjardimsilveira@saudedafamilia.org",
-            "UBS Krukutu": "ubs.krukutu@saudedafamilia.org",
-            "UBS Marsilac": "ubsmarsilac@saudedafamilia.org",
-            "UBS Nova América": "ubsnovaamerica@saudedafamilia.org",
-            "UBS Parelheiros": "ubs.parelheiros@saudedafamilia.org",
-            "UBS Recanto Campo Belo": "ubsrecantocampobelo@saudedafamilia.org",
-            "UBS Vargem Grande": "ubsvargemgrande@saudedafamilia.org",
-            "UBS Verá Poty": "ubsverapoty@saudedafamilia.org",
-            "UBS Vila Marcelo": "ubsvilamarcelo@saudedafamilia.org",
-            "UBS Vila Roschel": "ubsvilaroschel@saudedafamilia.org"
-        };
-
-        const whatsappMap = {
-            "UBS Barragem": "99535-4171",
-            "UBS Colônia": "95465-6842",
-            "UBS Dom Luciano Bergamin": "99937-8567",
-            "UBS Jardim Campinas": "97414-5564",
-            "UBS Jardim das Fontes": "96875-0128",
-            "UBS Jardim Embura": "99625-4480",
-            "UBS Jardim Iporã": "99886-9990",
-            "UBS Jardim Santa Fé": "98686-3537",
-            "UBS Jardim São Norberto": "96833-5848",
-            "UBS Jardim Silveira": "96452-8484",
-            "UBS Krukutu": "945049293",
-            "UBS Marsilac": "98881-6597",
-            "UBS Nova América": "94983-8399",
-            "UBS Parelheiros": "95911-8558",
-            "UBS Recanto Campo Belo": "94728-1422",
-            "UBS Vargem Grande": "97287-1865",
-            "UBS Verá Poty": "95464-6688",
-            "UBS Vila Marcelo": "96398-6476",
-            "UBS Vila Roschel": "99634-9266"
-        };
-
-        function setupChecklist(checklistId) {
-            const checklist = document.getElementById(checklistId);
-            checklist.addEventListener('click', function(e) {
-                if (e.target.tagName === 'LI') {
-                    e.target.classList.toggle('checked');
-                    updateSummary();
-                }
-            });
-        }
-
-        setupChecklist('checklist1');
-        setupChecklist('checklist2');
-
-        function updateSummary() {
-            const unchecked1 = document.querySelectorAll('#checklist1 li:not(.checked)').length;
-            const unchecked2 = document.querySelectorAll('#checklist2 li:not(.checked)').length;
-
-            document.getElementById('summary1').innerHTML = `Unidades não clicadas: ${unchecked1}`;
-            document.getElementById('summary2').innerHTML = `Unidades não clicadas: ${unchecked2}`;
-        }
-
-        function getUncheckedItems() {
-            const uncheckedItems = [];
-            if (document.getElementById('include-list1').checked) {
-                document.querySelectorAll('#checklist1 li:not(.checked)').forEach(item => {
-                    uncheckedItems.push(item.textContent);
-                });
-            }
-            if (document.getElementById('include-list2').checked) {
-                document.querySelectorAll('#checklist2 li:not(.checked)').forEach(item => {
-                    uncheckedItems.push(item.textContent);
-                });
-            }
-            return uncheckedItems;
-        }
-
-        function generateEmails() {
-            const template = document.getElementById('email-template').value;
-            const uncheckedItems = getUncheckedItems();
-            let emailList = '';
-            let emailAddresses = [];
-
-            let emailContent = template;
-            emailContent = emailContent.replace(/\[UBS_LIST\]/g, uncheckedItems.join("\n"));
-            
-            uncheckedItems.forEach(ubs => {
-                const email = emailMap[ubs];
-                if (email) emailAddresses.push(email);
-            });
-
-            emailList += `<h3>Conteúdo do E-mail:</h3>`;
-            emailList += `<pre>${emailContent}</pre>`;
-            emailList += `<h3>Endereços de E-mail para Cópia:</h3>`;
-            emailList += `<textarea readonly rows="5" style="width: 100%;">${emailAddresses.join(", ")}</textarea>`;
-
-            document.getElementById('email-list').innerHTML = emailList;
-        }
-
-        function generateWhatsApp() {
-            const template = document.getElementById('whatsapp-template').value;
-            const uncheckedItems = getUncheckedItems();
-            let whatsappList = '';
-            let whatsappNumbers = [];
-
-            let whatsappContent = template;
-            whatsappContent = whatsappContent.replace(/\[UBS_LIST\]/g, uncheckedItems.join("\n"));
-            
-            uncheckedItems.forEach(ubs => {
-                const number = whatsappMap[ubs];
-                if (number) whatsappNumbers.push(number);
-            });
-
-            whatsappList += `<h3>Conteúdo da Mensagem WhatsApp:</h3>`;
-            whatsappList += `<pre>${whatsappContent}</pre>`;
-            whatsappList += `<h3>Números de WhatsApp:</h3>`;
-            whatsappList += `<textarea readonly rows="5" style="width: 100%;">${whatsappNumbers.join(", ")}</textarea>`;
-
-            let whatsappButtons = '<h3>Botões de WhatsApp:</h3>';
-            whatsappNumbers.forEach((number, index) => {
-                whatsappButtons += `<a href="https://wa.me/55${number}" target="_blank" class="whatsapp-button">WhatsApp ${index + 1}</a>`;
-            });
-
-            document.getElementById('whatsapp-list').innerHTML = whatsappList;
-            document.getElementById('whatsapp-buttons').innerHTML = whatsappButtons;
-        }
-
-        // Pré-preencher o template de e-mail
-        document.getElementById('email-template').value = `Prezados responsáveis,
-
-Esperamos que esta mensagem os encontre bem. Gostaríamos de chamar sua atenção para pendências em nosso sistema referentes às seguintes UBS:
-
-[UBS_LIST]
-
-Notamos que há itens não verificados em nossa lista de controle para estas unidades, o que pode impactar nossos processos internos e a qualidade do atendimento oferecido à comunidade.
-
-Solicitamos gentilmente que verifiquem e atualizem as informações pendentes o mais breve possível. Caso necessitem de qualquer assistência ou esclarecimento, por favor, não hesitem em nos contatar.
-
-Agradecemos antecipadamente pela sua pronta atenção a este assunto.
-
-Atenciosamente,
-Equipe de Gestão e Controle`;
-
-        // Inicializar o sumário
-        updateSummary();
-
-        const darkModeToggle = document.getElementById('darkModeToggle');
-        darkModeToggle.addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
-        });
-    </script>
-</body></html>
+    <script src="../assets/js/checklist.js"></script>
+</body>
+</html>
