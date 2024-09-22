@@ -1,0 +1,471 @@
+<html><head><base href="https://creativeai.tools/?">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CreativeAI Tools</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        :root {
+            --primary: #6C63FF;
+            --secondary: #FF6584;
+            --tertiary: #4CAF50;
+            --quaternary: #FFC107;
+            --quinary: #03A9F4;
+            --senary: #9C27B0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #000000;
+            color: #ffffff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .tool-card {
+            background: #1a1a1a;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .tool-header {
+            padding: 1.5rem;
+            color: white;
+        }
+
+        .tool-content {
+            padding: 1.5rem;
+        }
+
+        .tool-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .tool-description {
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .tool-button {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background-color: white;
+            color: #333;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+        .tool-button:hover {
+            background-color: #f0f0f0;
+        }
+
+        #imagegen { background-color: var(--primary); }
+        #videogen { background-color: var(--secondary); }
+        #recipegen { background-color: var(--tertiary); }
+        #musicgen { background-color: var(--quaternary); }
+        #storygen { background-color: var(--quinary); }
+        #designgen { background-color: var(--senary); }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+        }
+
+        .modal-content {
+            background-color: #1a1a1a;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+            border-radius: 15px;
+            color: #ffffff;
+        }
+
+        .close {
+            color: #ffffff;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #cccccc;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .tool-form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tool-form input,
+        .tool-form textarea,
+        .tool-form select {
+            margin-bottom: 1rem;
+            padding: 0.5rem;
+            background-color: #333333;
+            color: #ffffff;
+            border: 1px solid #555555;
+            border-radius: 5px;
+        }
+
+        .tool-form button {
+            padding: 0.5rem 1rem;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .tool-form button:hover {
+            background-color: #5753d9;
+        }
+
+        #output,
+        #imageOutput,
+        #videoOutput,
+        #recipeOutput,
+        #musicOutput,
+        #storyOutput,
+        #designOutput {
+            margin-top: 1rem;
+            padding: 1rem;
+            background-color: #1a1a1a;
+            color: #ffffff;
+        }
+
+        .loader {
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid var(--primary);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .video-output-container {
+            background-color: #1a1a1a;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .video-output-container h3 {
+            margin-bottom: 15px;
+            color: #ffffff;
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+
+        .video-wrapper video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .video-info {
+            margin-bottom: 15px;
+        }
+
+        .video-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+        }
+
+        .action-button {
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .download-button {
+            background-color: #4CAF50;
+        }
+
+        .download-button:hover {
+            background-color: #45a049;
+        }
+
+        .share-button {
+            background-color: #3b5998;
+            border: none;
+            cursor: pointer;
+        }
+
+        .share-button:hover {
+            background-color: #344e86;
+        }
+
+        .wrapper {
+            padding: 20px;
+        }
+
+        .heading-style {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .ai-subtitle {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .prompt-input {
+            margin-bottom: 20px;
+        }
+
+        .ai-prompt-input-label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .ai-prompt-input-field {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .custom-range-slider-container {
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .slider-messages {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 5px;
+        }
+
+        .dropdown-with-icon {
+            position: relative;
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .textBox {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .option {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: #fff;
+            border: 1px solid #ccc;
+            border-top: none;
+            border-radius: 0 0 5px 5px;
+            display: none;
+        }
+
+        .option div {
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .option div:hover {
+            background: #f0f0f0;
+        }
+
+        .prompt-result {
+            margin-top: 20px;
+        }
+
+        .result-input-text {
+            background: #f0f0f0;
+            padding: 15px;
+            border-radius: 5px;
+        }
+
+        .feedback_thumbs {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 10px;
+        }
+
+        .feedback_thumbs i {
+            margin-left: 10px;
+            cursor: pointer;
+        }
+
+        .AIgeneratorButtons {
+            margin-top: 20px;
+        }
+
+        .button_basic {
+            padding: 10px 20px;
+            background-color: #6C63FF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .button_basic:hover {
+            background-color: #5753d9;
+        }
+
+        .ai_generator_loader {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #fff;
+            border-radius: 50%;
+            border-top: 2px solid #6C63FF;
+            animation: spin 1s linear infinite;
+            margin-left: 10px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Ferramentas da Sala</h1>
+            <p>Libere sua criatividade com nossas poderosas ferramentas impulsionadas por IA</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="tool-grid">
+            <div class="tool-card">
+                <div class="tool-header" id="imagegen">
+                    <h2 class="tool-title">Lista de Contatos</h2>
+                    <p class="tool-description">Acesse e gerencie sua lista de contatos facilmente</p>
+                    <a href="https://seuservidordestreamlit.com/contatos" class="tool-button">Acessar Lista</a>
+                </div>
+            </div>
+            <div class="tool-card">
+                <div class="tool-header" id="videogen">
+                    <h2 class="tool-title">Ferramentas de Verificação</h2>
+                    <p class="tool-description">Utilize nossas ferramentas para verificar informações com precisão</p>
+                    <a href="https://seuservidordastreamlit.com/verificacao" class="tool-button">Verificar Agora</a>
+                </div>
+            </div>
+            <div class="tool-card">
+                <div class="tool-header" id="recipegen">
+                    <h2 class="tool-title">Consolidador de Planilhas</h2>
+                    <p class="tool-description">Consolide suas planilhas de maneira eficiente</p>
+                    <a href="https://seuservidordastreamlit.com/consolidador" class="tool-button">Consolidar Planilhas</a>
+                </div>
+            </div>
+            <div class="tool-card">
+                <div class="tool-header" id="musicgen">
+                    <h2 class="tool-title">Envio de Mensagens com Bots</h2>
+                    <p class="tool-description">Envie mensagens automaticamente usando bots inteligentes</p>
+                    <a href="https://seuservidordastreamlit.com/mensagens" class="tool-button">Enviar Mensagens</a>
+                </div>
+            </div>
+            <div class="tool-card">
+                <div class="tool-header" id="storygen">
+                    <h2 class="tool-title">Ferramenta em Construção</h2>
+                    <p class="tool-description">Esta ferramenta está em fase de desenvolvimento</p>
+                    <a href="#" class="tool-button">Em Breve</a>
+                </div>
+            </div>
+            <div class="tool-card">
+                <div class="tool-header" id="designgen">
+                    <h2 class="tool-title">Ferramenta em Construção</h2>
+                    <p class="tool-description">Esta ferramenta está em fase de desenvolvimento</p>
+                    <a href="#" class="tool-button">Em Breve</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+    <script>
+function openModal(modalId) {
+    document.getElementById(modalId).style.display = "block";
+}
+
+function closeModal(modalId) {
+    document.getElementById(modalId).style.display = "none";
+}
+
+window.onclick = function(event) {
+    if (event.target.className === "modal") {
+        event.target.style.display = "none";
+    }
+}
+    </script>
+</body></html>
