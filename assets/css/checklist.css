@@ -10,21 +10,26 @@
 body {
     font-family: 'Arial', sans-serif;
     line-height: 1.6;
-    color: var(--secondary); /* Cor principal de texto para dark mode */
+    color: var(--secondary);
+    /* Cor principal de texto para dark mode */
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
-    background-color: #121212; /* Fundo escuro */
+    background-color: #121212;
+    /* Fundo escuro */
     transition: background-color 0.3s, color 0.3s;
 }
 
 code {
     font-family: monospace;
-    color: #ffffff; /* Texto sempre branco */
-    background-color: #333; /* Fundo escuro para o bloco de código */
+    color: #ffffff;
+    /* Texto sempre branco */
+    background-color: #333;
+    /* Fundo escuro para o bloco de código */
 }
 
-h1, h2 {
+h1,
+h2 {
     color: var(--primary);
 }
 
@@ -35,10 +40,11 @@ h1, h2 {
 
 .checklist-column {
     flex: 1;
-    background-color: #1e1e1e; /* Fundo das colunas */
+    background-color: #1e1e1e;
+    /* Fundo das colunas */
     border-radius: 8px;
     padding: 20px;
-    box-shadow: 0 2px 4px rgba(255,255,255,0.1);
+    box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
 }
 
 ul {
@@ -73,12 +79,40 @@ li.checked {
     border-radius: 4px;
 }
 
-#email-generator, #whatsapp-generator {
+#email-generator,
+#whatsapp-generator {
     background-color: #1e1e1e;
     border-radius: 8px;
     padding: 20px;
     margin-top: 20px;
-    box-shadow: 0 2px 4px rgba(255,255,255,0.1);
+    box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
+}
+
+.email-section {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #1e1e1e;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+.email-section h3 {
+    color: #FF6584;
+    margin-bottom: 10px;
+}
+
+.email-block {
+    background-color: #333;
+    padding: 15px;
+    border-radius: 4px;
+    color: white;
+    font-family: monospace;
+    white-space: pre-wrap;
+}
+
+.separator {
+    margin-bottom: 20px;
 }
 
 textarea {

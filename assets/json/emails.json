@@ -1,47 +1,346 @@
 {
-    "UBS Alcina Pimentel Piza": "ubsalcinapimentel@saudedafamilia.org",
-    "UBS Anchieta": "ubs.jardimanchieta@saudedafamilia.org",
-    "UBS Autódromo": "ubs.autodromo@saudedafamilia.org",
-    "UBS Cantinho do Céu": "ubscantinhodoceu@saudedafamilia.org",
-    "UBS Chácara do Conde": "ubschacaradoconde@saudedafamilia.org",
-    "UBS Chácara do Sol": "ubs.chacaradosol.adm@saudedafamilia.org",
-    "UBS Chácara Santo Amaro": "ubschacarasantoamaro@saudedafamilia.org",
-    "UBS Dr. Sérgio Chaddad": "ubs.sergiochaddad@saudedafamilia.org",
-    "UBS Gaivotas": "ubsgaivotas@saudedafamilia.org",
-    "UBS Jardim Cliper": "ubs.jardimcliper.adm@saudedafamilia.org",
-    "UBS Jardim Eliane": "ubsjardimeliane@saudedafamilia.org",
-    "UBS Jardim Icaraí Quintana": "ubsjardimicaraiquintana@saudedafamilia.org",
-    "UBS Jardim Lucélia Sandra Ap Barbosa Correia Lima": "ubs.jardimlucelia@saudedafamilia.org",
-    "UBS Jardim Novo Horizonte": "ubsnovohorizonte@saudedafamilia.org, emad.jardimnovohorizonte.rh@saudedafamilia.org",
-    "UBS Jardim Orion/Guanhembu": "ubs.orion.rh@saudedafamilia.org",
-    "UBS Jardim Reimberg": "ubs.jdreimberg@saudedafamilia.org",
-    "UBS Jardim República": "ubs.jardimrepublica@saudedafamilia.org",
-    "UBS Jardim São Bernardo": "ubs.jdsaobernardo@saudedafamilia.org",
-    "UBS Jardim Três Corações": "ubsjardimtrescoracoes@saudedafamilia.org",
-    "UBS Jordanópolis": "ubsjordanopolis@saudedafamilia.org",
-    "UBS Parque Residencial Cocaia": "ubsprcocaia@saudedafamilia.org",
-    "UBS Shangrilá Ellus": "ubs.shangrilaellus@saudedafamilia.org",
-    "UBS Varginha": "ubsvarginha@saudedafamilia.org",
-    "UBS Veleiros": "ubs.veleiros@saudedafamilia.org",
-    "UBS Vila Natal": "ubsvilanatal@saudedafamilia.org",
-    "UBS Barragem": "ubs.barragem.adm@saudedafamilia.org",
-    "UBS Colônia": "ubscolonia@saudedafamilia.org",
-    "UBS Dom Luciano Bergamin": "ubsdomluciano@saudedafamilia.org",
-    "UBS Jardim Campinas": "ubs.jardimcampinas@saudedafamilia.org",
-    "UBS Jardim das Fontes": "ubsjardimdasfontes@saudedafamilia.org",
-    "UBS Jardim Embura": "ubsembura@saudedafamilia.org",
-    "UBS Jardim Iporã": "ubsjardimipora@saudedafamilia.org",
-    "UBS Jardim Santa Fé": "ubsjardimsantafe@saudedafamilia.org",
-    "UBS Jardim São Norberto": "ubs.jardimsaonorberto@saudedafamilia.org",
-    "UBS Jardim Silveira": "ubsjardimsilveira@saudedafamilia.org",
-    "UBS Krukutu": "ubs.krukutu@saudedafamilia.org",
-    "UBS Marsilac": "ubsmarsilac@saudedafamilia.org",
-    "UBS Nova América": "ubsnovaamerica@saudedafamilia.org",
-    "UBS Parelheiros": "ubs.parelheiros@saudedafamilia.org",
-    "UBS Recanto Campo Belo": "ubsrecantocampobelo@saudedafamilia.org",
-    "UBS Vargem Grande": "ubsvargemgrande@saudedafamilia.org",
-    "UBS Verá Poty": "ubsverapoty@saudedafamilia.org",
-    "UBS Vila Marcelo": "ubsvilamarcelo@saudedafamilia.org",
-    "UBS Vila Roschel": "ubsvilaroschel@saudedafamilia.org"
-  }
-  
+  "unidades_saude": [
+    {
+      "nome": "AMA UBS Jardim Mirna",
+      "unidade": "ubsjardimmirna@saudedafamilia.org",
+      "gerente": "apujol@saudedafamilia.org",
+      "rt_enfermagem": "brsilva@saudedafamilia.org"
+    },
+    {
+      "nome": "AMA/UBS Jardim Castro Alves Dra Maria Cristina F",
+      "unidade": "ubsjardimcastroalves@saudedafamilia.org",
+      "gerente": "ccardoso@saudedafamilia.org",
+      "rt_enfermagem": "adlemos@saudedafamilia.org, nysilva@saudedafamilia.org"
+    },
+    {
+      "nome": "UBS Alcina Pimentel Piza",
+      "unidade": "ubsalcinapimentel@saudedafamilia.org",
+      "gerente": "emoretti@saudedafamilia.org",
+      "rt_enfermagem": "pasantana@saudedafamilia.org"
+    },
+    {
+      "nome": "UBS Anchieta",
+      "unidade": "ubs.jardimanchieta@saudedafamilia.org",
+      "gerente": "amessina@saudedafamilia.org",
+      "rt_enfermagem": ""
+    },
+    {
+      "nome": "UBS Autódromo",
+      "unidade": "ubs.autodromo@saudedafamilia.org",
+      "gerente": "jrosse@saudedafamilia.org",
+      "rt_enfermagem": "fmelo@saudedafamilia.org"
+    },
+    {
+      "nome": "UBS Cantinho do Céu",
+      "unidade": "ubscantinhodoceu@saudedafamilia.org",
+      "gerente": "",
+      "rt_enfermagem": "kbrandao@saudedafamilia.org"
+    },
+    {
+      "nome": "UBS Chácara do Conde",
+      "unidade": "ubschacaradoconde@saudedafamilia.org",
+      "gerente": "lssmelo@saudedafamilia.org",
+      "rt_enfermagem": "kscarvalho@saudedafamilia.org"
+    },
+    {
+      "nome": "UBS Chácara do Sol",
+      "unidade": "ubs.chacaradosol.adm@saudedafamilia.org",
+      "gerente": "tmota@saudedafamilia.org",
+      "rt_enfermagem": "ccalado@saudedafamilia.org"
+    },
+    {
+      "nome": "UBS Chácara Santo Amaro",
+      "unidade": "ubschacarasantoamaro@saudedafamilia.org",
+      "gerente": "pollyborges@saudedafamilia.org",
+      "rt_enfermagem": "abjunior@saudedafamilia.org"
+    },
+    {
+      "nome": "UBS Dr. Sérgio Chaddad",
+      "unidade": "ubs.sergiochaddad@saudedafamilia.org",
+      "gerente": "crnascimento@saudedafamilia.org",
+      "rt_enfermagem": "nbrum@saudedafamilia.org"
+    },
+    {
+      "nome": "UBS Gaivotas",
+      "unidade": "ubsgaivotas@saudedafamilia.org",
+      "gerente": "rabarbosa@saudedafamilia.org",
+      "rt_enfermagem": "mondei@saudedafamilia.org"
+    },
+    {
+      "nome": "UBS Jardim Cliper",
+      "unidade": "ubs.jardimcliper.adm@saudedafamilia.org",
+      "gerente": "lnavarro@saudedafamilia.org",
+      "rt_enfermagem": "tdpaula@saudedafamilia.org"
+    },
+    {
+      "nome": "UBS Jardim Eliane",
+      "unidade": "ubsjardimeliane@saudedafamilia.org",
+      "gerente": "fstella@saudedafamilia.org",
+      "rt_enfermagem": "mqueiroga@saudedafamilia.org"
+    },
+    {
+      "nome": "UBS Jardim Icaraí Quintana",
+      "unidade": "ubsjardimicaraiquintana@saudedafamilia.org",
+      "gerente": "fcarrascosa@saudedafamilia.org",
+      "rt_enfermagem": "airis@saudedafamilia.org"
+    },
+    {
+      "nome": "UBS Jardim Lucélia Sandra Ap Barbosa Correia Lima",
+      "unidade": "ubs.jardimlucelia@saudedafamilia.org",
+      "gerente": "damonteiro@saudedafamilia.org",
+      "rt_enfermagem": "ematos@saudedafamilia.org"
+    },
+    {
+      "nome": "UBS Jardim Novo Horizonte",
+      "unidade": "ubsnovohorizonte@saudedafamilia.org, emad.jardimnovohorizonte.rh@saudedafamilia.org",
+      "gerente": "cmjunior@saudedafamilia.org",
+      "rt_enfermagem": "aavelar@saudedafamilia.org"
+    },
+    {
+      "nome": "UBS Jardim Orion Guanhembu",
+      "unidade": "ubs.orion.rh@saudedafamilia.org",
+      "gerente": "avilella@saudedafamilia.org",
+      "rt_enfermagem": "elaisantos@saudedafamilia.org"
+    },
+    {
+      "nome": "UBS Jardim Reimberg",
+      "unidade": "ubs.jdreimberg@saudedafamilia.org",
+      "gerente": "bguedes@saudedafamilia.org",
+      "rt_enfermagem": "cmdcosta@saudedafamilia.org"
+    },
+    {
+      "nome": "UBS Jardim República",
+      "unidade": "ubs.jardimrepublica@saudedafamilia.org",
+      "gerente": "cabuno@saudedafamilia.org",
+      "rt_enfermagem": "ldourado@saudedafamilia.org"
+    },
+    {
+      "nome": "UBS Jardim São Bernardo",
+      "unidade": "ubs.jdsaobernardo@saudedafamilia.org",
+      "gerente": "eparanzini@saudedafamilia.org",
+      "rt_enfermagem": ""
+    },
+    {
+      "nome": "UBS Jardim Três Corações",
+      "unidade": "ubsjardimtrescoracoes@saudedafamilia.org",
+      "gerente": "rfernandes@saudedafamilia.org",
+      "rt_enfermagem": "amagdaleno@saudedafamilia.org"
+    },
+    {
+      "nome": "UBS Jordanópolis",
+      "unidade": "ubsjordanopolis@saudedafamilia.org",
+      "gerente": "",
+      "rt_enfermagem": "guimacedo@saudedafamilia.org"
+    },
+    {
+      "nome": "UBS Parque Residencial Cocaia",
+      "unidade": "ubsprcocaia@saudedafamilia.org",
+      "gerente": "",
+      "rt_enfermagem": "llsilva@saudedafamilia.org"
+    },
+    {
+      "nome": "UBS Shangrilá Ellus",
+      "unidade": "ubs.shangrilaellus@saudedafamilia.org",
+      "gerente": "ltaira@saudedafamilia.org",
+      "rt_enfermagem": "lramaldes@saudedafamilia.org"
+    },
+    {
+      "nome": "UBS Varginha",
+      "unidade": "ubsvarginha@saudedafamilia.org",
+      "gerente": "esmacedo@saudedafamilia.org",
+      "rt_enfermagem": "tsavo@saudedafamilia.org"
+    },
+    {
+      "nome": "UBS Veleiros",
+      "unidade": "ubs.veleiros@saudedafamilia.org",
+      "gerente": "suoliveira@saudedafamilia.org",
+      "rt_enfermagem": "kveiga@saudedafamilia.org"
+    },
+    {
+      "nome": "UBS Vila Natal",
+      "unidade": "ubsvilanatal@saudedafamilia.org",
+      "gerente": "cdebbio@saudedafamilia.org",
+      "rt_enfermagem": "lsoliveira@saudedafamilia.org"
+    },
+    {
+      "nome": "UBS Barragem",
+      "unidade": "ubs.barragem.adm@saudedafamilia.org",
+      "gerente": "vfelippe@saudedafamilia.org",
+      "rt_enfermagem": "rsmaciel@saudedafamilia.org"
+    },
+    {
+      "nome": "UBS Colônia",
+      "unidade": "ubscolonia@saudedafamilia.org",
+      "gerente": "ebenacci@saudedafamilia.org",
+      "rt_enfermagem": "mcortez@saudedafamilia.org"
+    },
+    {
+      "nome": "UBS Dom Luciano Bergamin",
+      "unidade": "ubsdomluciano@saudedafamilia.org",
+      "gerente": "julipereira@saudedafamilia.org",
+      "rt_enfermagem": "lalves@saudedafamilia.org"
+    },
+    {
+      "nome": "UBS Jardim Campinas",
+      "unidade": "ubs.jardimcampinas@saudedafamilia.org",
+      "gerente": "nscaliante@saudedafamilia.org",
+      "rt_enfermagem": "dadsantos@saudedafamilia.org"
+    },
+    {
+      "nome": "UBS Jardim das Fontes",
+      "unidade": "ubsjardimdasfontes@saudedafamilia.org",
+      "gerente": "cmarchetti@saudedafamilia.org",
+      "rt_enfermagem": "jfilho@saudedafamilia.org"
+    },
+    {
+      "nome": "UBS Jardim Embura",
+      "unidade": "ubsembura@saudedafamilia.org",
+      "gerente": "tlima@saudedafamilia.org",
+      "rt_enfermagem": "jfsoares@saudedafamilia.org"
+    },
+    {
+      "nome": "UBS Jardim Iporã",
+      "unidade": "ubsjardimipora@saudedafamilia.org",
+      "gerente": "apvalderrama@saudedafamilia.org",
+      "rt_enfermagem": "laureliano@saudedafamilia.org"
+    },
+    {
+      "nome": "UBS Jardim Santa Fé",
+      "unidade": "ubsjardimsantafe@saudedafamilia.org",
+      "gerente": "ealima@saudedafamilia.org",
+      "rt_enfermagem": "caarodrigues@saudedafamilia.org"
+    },
+    {
+      "nome": "UBS Jardim São Norberto",
+      "unidade": "ubs.jardimsaonorberto@saudedafamilia.org",
+      "gerente": "vcouto@saudedafamilia.org",
+      "rt_enfermagem": "dncruz@saudedafamilia.org"
+    },
+    {
+      "nome": "UBS Jardim Silveira",
+      "unidade": "ubsjardimsilveira@saudedafamilia.org",
+      "gerente": "vsantos@saudedafamilia.org",
+      "rt_enfermagem": "afonseca@saudedafamilia.org"
+    },
+    {
+      "nome": "UBS Krukutu",
+      "unidade": "ubs.krukutu@saudedafamilia.org",
+      "gerente": "calbuquerque@saudedafamilia.org",
+      "rt_enfermagem": "iregina@saudedafamilia.org"
+    },
+    {
+      "nome": "UBS Marsilac",
+      "unidade": "ubsmarsilac@saudedafamilia.org",
+      "gerente": "clelima@saudedafamilia.org",
+      "rt_enfermagem": "vsato@saudedafamilia.org"
+    },
+    {
+      "nome": "UBS Nova América",
+      "unidade": "ubsnovaamerica@saudedafamilia.org",
+      "gerente": "lumoreira@saudedafamilia.org",
+      "rt_enfermagem": "mmelo@saudedafamilia.org"
+    },
+    {
+      "nome": "UBS Parelheiros",
+      "unidade": "ubs.parelheiros@saudedafamilia.org",
+      "gerente": "mbergmann@saudedafamilia.org",
+      "rt_enfermagem": "pnetto@saudedafamilia.org"
+    },
+    {
+      "nome": "UBS Recanto Campo Belo",
+      "unidade": "ubsrecantocampobelo@saudedafamilia.org",
+      "gerente": "dgasparoto@saudedafamilia.org",
+      "rt_enfermagem": "lacarvalho@saudedafamilia.org"
+    },
+    {
+      "nome": "UBS Vargem Grande",
+      "unidade": "ubsvargemgrande@saudedafamilia.org",
+      "gerente": "eleal@saudedafamilia.org",
+      "rt_enfermagem": "ybrasileiro@saudedafamilia.org"
+    },
+    {
+      "nome": "UBS Verá Poty",
+      "unidade": "ubsverapoty@saudedafamilia.org",
+      "gerente": "kmascarenhas@saudedafamilia.org",
+      "rt_enfermagem": "viviramos@saudedafamilia.org"
+    },
+    {
+      "nome": "UBS Vila Marcelo",
+      "unidade": "ubsvilamarcelo@saudedafamilia.org",
+      "gerente": "lrodrigues@saudedafamilia.org",
+      "rt_enfermagem": "gbvieira@saudedafamilia.org"
+    },
+    {
+      "nome": "UBS Vila Roschel",
+      "unidade": "ubsvilaroschel@saudedafamilia.org",
+      "gerente": "lsfarias@saudedafamilia.org",
+      "rt_enfermagem": "drdsilva@saudedafamilia.org"
+    },
+    {
+      "nome": "UPA Parelheiros",
+      "unidade": "upa.parelheiros@saudedafamilia.org",
+      "gerente": "cpereira@saudedafamilia.org, vesoares@saudedafamilia.org",
+      "rt_enfermagem": "vrios@saudedafamilia.org"
+    },
+    {
+      "nome": "CAPS Infanto-Juvenil II Parelheiros (AQUARELA)",
+      "unidade": "caps.ijiiparelheiros@saudedafamilia.org",
+      "gerente": "cmarcal@saudedafamilia.org",
+      "rt_enfermagem": "kveronica@saudedafamilia.org"
+    },
+    {
+      "nome": "CEO III Parelheiros",
+      "unidade": "ceoparelheiros@saudedafamilia.org",
+      "gerente": "ldamiana@saudedafamilia.org",
+      "rt_enfermagem": ""
+    },
+    {
+      "nome": "CER II Parelheiros",
+      "unidade": "cer2.parelheiros.rh@saudedafamilia.org",
+      "gerente": "",
+      "rt_enfermagem": ""
+    },
+    {
+      "nome": "APD CER Parelheiros",
+      "unidade": "apdparelheiros@saudedafamilia.org",
+      "gerente": "",
+      "rt_enfermagem": ""
+    },
+    {
+      "nome": "EEV Parelheiros (Alocado na UBS Jd. Campinas)",
+      "unidade": "",
+      "gerente": "nscaliante@saudedafamilia.org",
+      "rt_enfermagem": ""
+    },
+    {
+      "nome": "EMAD Parelheiros",
+      "unidade": "psmbalneario.emad@saudedafamilia.org",
+      "gerente": "hnigre@saudedafamilia.org, emssilva@saudedafamilia.org",
+      "rt_enfermagem": "fpsouza@saudedafamilia.org"
+    },
+    {
+      "nome": "PAI Parelheiros",
+      "unidade": "pai.jardimcampinas@saudedafamilia.org",
+      "gerente": "baranha@saudedafamilia.org",
+      "rt_enfermagem": "lnovais@saudedafamilia.org"
+    },
+    {
+      "nome": "PSM Balneário São José",
+      "unidade": "psmbalneario@saudedafamilia.org",
+      "gerente": "hnigre@saudedafamilia.org, emssilva@saudedafamilia.org",
+      "rt_enfermagem": "agpsouza@saudedafamilia.org, jnicolau@saudedafamilia.org"
+    },
+    {
+      "nome": "SRT Parelheiros I",
+      "unidade": "srtparelheiros@saudedafamilia.org",
+      "gerente": "imaciel@saudedafamilia.org",
+      "rt_enfermagem": ""
+    },
+    {
+      "nome": "SRT Parelheiros II",
+      "unidade": "srt2.parelheiros@saudedafamilia.org",
+      "gerente": "gteada@saudedafamilia.org",
+      "rt_enfermagem": ""
+    }
+  ]
+}

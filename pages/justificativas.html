@@ -1,0 +1,164 @@
+<html><head><base href="https://webchat.justificativas.com/">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Analisador de Justificativas</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+  .container {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    padding: 20px;
+    width: 80%;
+    max-width: 600px;
+  }
+  h1 {
+    color: #333;
+    text-align: center;
+  }
+  #chat-container {
+    height: 300px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  #user-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  #send-btn, #train-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  #train-btn {
+    background-color: #008CBA;
+  }
+  .message {
+    margin-bottom: 10px;
+    padding: 5px;
+    border-radius: 5px;
+  }
+  .user-message {
+    background-color: #e6f3ff;
+    text-align: right;
+  }
+  .bot-message {
+    background-color: #f0f0f0;
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <h1>Analisador de Justificativas</h1>
+    <div id="chat-container"></div>
+    <input type="text" id="user-input" placeholder="Digite sua justificativa ou regra...">
+    <button id="send-btn">Enviar</button>
+    <button id="train-btn">Treinar Chatbot</button>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@3.11.0/dist/tf.min.js"></script>
+  <script>
+    const chatContainer = document.getElementById('chat-container');
+    const userInput = document.getElementById('user-input');
+    const sendBtn = document.getElementById('send-btn');
+    const trainBtn = document.getElementById('train-btn');
+
+    let rules = [];
+    let model;
+    let isTrained = false;
+
+    function addMessage(message, isUser) {
+      const messageElement = document.createElement('div');
+      messageElement.classList.add('message');
+      messageElement.classList.add(isUser ? 'user-message' : 'bot-message');
+      messageElement.textContent = message;
+      chatContainer.appendChild(messageElement);
+      chatContainer.scrollTop = chatContainer.scrollHeight;
+    }
+
+    function analyzeJustification(justification) {
+      if (!isTrained) {
+        return "Por favor, treine o chatbot primeiro adicionando regras.";
+      }
+
+      const inputTensor = tf.tensor2d([justification.split(' ').map(word => rules.includes(word) ? 1 : 0)]);
+      const prediction = model.predict(inputTensor);
+      const isValid = prediction.dataSync()[0] > 0.5;
+
+      return isValid ? "A justificativa é válida." : "A justificativa não é válida.";
+    }
+
+    async function trainModel() {
+      if (rules.length === 0) {
+        addMessage("Por favor, adicione algumas regras antes de treinar o modelo.", false);
+        return;
+      }
+
+      const trainingData = rules.map(rule => ({
+        input: rule.split(' ').map(word => rules.includes(word) ? 1 : 0),
+        output: [1]
+      }));
+
+      const inputs = tf.tensor2d(trainingData.map(data => data.input));
+      const outputs = tf.tensor2d(trainingData.map(data => data.output));
+
+      model = tf.sequential();
+      model.add(tf.layers.dense({ units: 8, activation: 'relu', inputShape: [rules.length] }));
+      model.add(tf.layers.dense({ units: 1, activation: 'sigmoid' }));
+
+      model.compile({ optimizer: 'adam', loss: 'binaryCrossentropy', metrics: ['accuracy'] });
+
+      await model.fit(inputs, outputs, { epochs: 50 });
+
+      isTrained = true;
+      addMessage("O chatbot foi treinado com sucesso!", false);
+    }
+
+    sendBtn.addEventListener('click', () => {
+      const message = userInput.value.trim();
+      if (message) {
+        addMessage(message, true);
+        const response = analyzeJustification(message);
+        addMessage(response, false);
+        userInput.value = '';
+      }
+    });
+
+    trainBtn.addEventListener('click', async () => {
+      addMessage("Treinando o chatbot...", false);
+      await trainModel();
+    });
+
+    userInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        sendBtn.click();
+      }
+    });
+
+    // Mensagem inicial
+    addMessage("Olá! Eu sou o Analisador de Justificativas. Para começar, adicione algumas regras usando o formato 'Regra: [sua regra]'. Depois, clique em 'Treinar Chatbot' para me ensinar. Em seguida, você poderá enviar justificativas para que eu as analise!", false);
+  </script>
+</body>
+</html>

@@ -96,20 +96,17 @@
         <button id="copyEmailBtn" onclick="copyEmail()">Copiar E-mail</button>
     
         <!-- Bloco de código para mostrar o conteúdo do e-mail -->
-        <div id="email-list">
+        <div class="email-section">
             <h3>Conteúdo do E-mail:</h3>
-            <pre><code id="email-content"></code></pre>
+            <pre class="email-block"><code id="email-content"></code></pre>
+        </div>
+
+        <!-- Bloco de código para mostrar os e-mails formatados para cópia -->
+        <div class="email-section separator">
+            <h3>E-mails para Cobrança:</h3>
+            <pre class="email-block"><code id="email-addresses"></code></pre>
         </div>
     </div>
-    
-
-    <!-- <div id="whatsapp-generator">
-        <h2>Gerador de Mensagem WhatsApp</h2>
-        <textarea id="whatsapp-template" placeholder="Digite o modelo de mensagem WhatsApp aqui."></textarea>
-        <button onclick="generateWhatsApp()">Gerar Mensagem WhatsApp</button>
-        <div id="whatsapp-list"></div>
-        <div id="whatsapp-buttons"></div> -->
-    <!-- </div> -->
 
     <script src="../assets/js/checklist.js"></script>
 </body>

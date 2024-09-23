@@ -46,6 +46,26 @@ function getUncheckedItems() {
     return uncheckedItems;
 }
 
+function getEmailAddresses() {
+    const emails = [];
+
+    emailMap.unidades_saude.forEach(unidade => {
+        const uncheckedItems = getUncheckedItems();
+        if (uncheckedItems.includes(unidade.nome)) {
+            if (document.getElementById('email-list1').checked) {
+                emails.push(unidade.unidade);
+            }
+            if (document.getElementById('email-list2').checked) {
+                emails.push(unidade.gerente);
+            }
+            if (document.getElementById('email-list3').checked) {
+                emails.push(unidade.rt_enfermagem);
+            }
+        }
+    });
+
+    return emails.join(', ');
+}
 function generateEmails() {
     const template = document.getElementById('email-template').value;
     const uncheckedItems = getUncheckedItems();
@@ -53,6 +73,10 @@ function generateEmails() {
     
     // Exibir o conteúdo do e-mail no bloco de código
     document.getElementById('email-content').textContent = emailContent;
+
+    // Exibir os e-mails para cópia
+    const emailAddresses = getEmailAddresses();
+    document.getElementById('email-addresses').textContent = emailAddresses;
 }
 
 function copyEmail() {
@@ -74,36 +98,6 @@ function copyEmail() {
     alert('Conteúdo do e-mail copiado!');
 }
 
-
-
-
-function generateWhatsApp() {
-    const template = document.getElementById('whatsapp-template').value;
-    const uncheckedItems = getUncheckedItems();
-    let whatsappList = '';
-    let whatsappNumbers = [];
-
-    let whatsappContent = template;
-    whatsappContent = whatsappContent.replace(/\[UBS_LIST\]/g, uncheckedItems.join("\n"));
-    
-    uncheckedItems.forEach(ubs => {
-        const number = whatsappMap[ubs];
-        if (number) whatsappNumbers.push(number);
-    });
-
-    whatsappList += `<h3>Conteúdo da Mensagem WhatsApp:</h3>`;
-    whatsappList += `<pre>${whatsappContent}</pre>`;
-    whatsappList += `<h3>Números de WhatsApp:</h3>`;
-    whatsappList += `<textarea readonly rows="5" style="width: 100%;">${whatsappNumbers.join(", ")}</textarea>`;
-
-    let whatsappButtons = '<h3>Botões de WhatsApp:</h3>';
-    whatsappNumbers.forEach((number, index) => {
-        whatsappButtons += `<a href="https://wa.me/55${number}" target="_blank" class="whatsapp-button">WhatsApp ${index + 1}</a>`;
-    });
-
-    document.getElementById('whatsapp-list').innerHTML = whatsappList;
-    document.getElementById('whatsapp-buttons').innerHTML = whatsappButtons;
-}
 
 // Pré-preencher o template de e-mail
 document.getElementById('email-template').value = 
