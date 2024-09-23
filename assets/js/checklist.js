@@ -4,11 +4,15 @@ document.body.classList.add('dark-mode');
 let emailMap = {};
 
 // Função para carregar o menu
+// Função para carregar o menu
 function loadMenu() {
     fetch('menu.html')  // Carrega o arquivo menu.html
         .then(response => response.text())
         .then(data => {
             document.getElementById('menu').innerHTML = data; // Insere o menu no div#menu
+            // Depois que o menu carregar, pode iniciar os outros scripts
+            setupChecklist('checklist1');
+            setupChecklist('checklist2');
         })
         .catch(error => console.error('Erro ao carregar o menu:', error));
 }
@@ -16,11 +20,13 @@ function loadMenu() {
 // Carrega o menu assim que a página for carregada
 window.onload = function() {
     loadMenu();
+};
+
 
     // Depois que o menu carregar, pode iniciar os outros scripts
     setupChecklist('checklist1');
     setupChecklist('checklist2');
-};
+
 
 
 fetch('../assets/json/emails.json')
@@ -30,15 +36,19 @@ fetch('../assets/json/emails.json')
     })
     .catch(error => console.error('Erro ao carregar o arquivo de emails:', error));
 
-function setupChecklist(checklistId) {
-    const checklist = document.getElementById(checklistId);
-    checklist.addEventListener('click', function(e) {
-        if (e.target.tagName === 'LI') {
-            e.target.classList.toggle('checked');
-            updateSummary();
-        }
-    });
-}
+    function setupChecklist(checklistId) {
+        const checklist = document.getElementById(checklistId);
+        console.log(`Checklist ${checklistId} configurado.`); // Verifica se a função está sendo chamada corretamente
+    
+        checklist.addEventListener('click', function(e) {
+            if (e.target.tagName === 'LI') {
+                e.target.classList.toggle('checked');
+                console.log(`Item clicado: ${e.target.textContent}`); // Verifica qual item foi clicado
+                updateSummary();
+            }
+        });
+    }
+    
 
 setupChecklist('checklist1');
 setupChecklist('checklist2');
