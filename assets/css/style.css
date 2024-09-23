@@ -17,9 +17,20 @@
 }
 
 body {
+    padding-top: 150px; /* Adiciona espaço suficiente abaixo do menu fixo */
     background-color: #000000;
     color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
 }
+
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 150px; /* Adicionar espaço para o menu */
+}
+
 
 .container {
     max-width: 1200px;

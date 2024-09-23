@@ -1,0 +1,167 @@
+<html><head><base href="https://colors.websim.io/animated-buttons/"><style>
+:root {
+    --primary: #6C63FF;
+    --secondary: #FF6584;
+    --tertiary: #4CAF50;
+    --quaternary: #FFC107;
+    --quinary: #03A9F4;
+    --senary: #9C27B0;
+    --background: #1e1e1e;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--background);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #ffffff;
+}
+
+.menu-container {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu-item {
+    padding: 15px 25px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: none;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.menu-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+    transition: all 0.5s;
+}
+
+.menu-item:hover::before {
+    left: 100%;
+}
+
+.menu-item:nth-child(1) { background-color: var(--primary); }
+.menu-item:nth-child(2) { background-color: var(--secondary); }
+.menu-item:nth-child(3) { background-color: var(--tertiary); }
+.menu-item:nth-child(4) { background-color: var(--quaternary); }
+.menu-item:nth-child(5) { background-color: var(--quinary); }
+.menu-item:nth-child(6) { background-color: var(--senary); }
+
+.menu-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.content {
+    margin-top: 40px;
+    text-align: center;
+    font-size: 24px;
+    color: #ffffff;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.menu-item.active {
+    animation: pulse 1s infinite;
+}
+</style></head><body>
+<div class="menu-container">
+    <ul class="menu">
+        <li class="menu-item" data-color="primary">Início</li>
+        <li class="menu-item" data-color="secondary">Produtos</li>
+        <li class="menu-item" data-color="tertiary">Serviços</li>
+        <li class="menu-item" data-color="quaternary">Sobre</li>
+        <li class="menu-item" data-color="quinary">Contato</li>
+        <li class="menu-item" data-color="senary">Blog</li>
+    </ul>
+    <div class="content">
+        Selecione um item do menu para ver o conteúdo
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const menuItems = document.querySelectorAll('.menu-item');
+    const content = document.querySelector('.content');
+
+    menuItems.forEach(item => {
+        item.addEventListener('click', () => {
+            const color = item.getAttribute('data-color');
+            const text = item.textContent;
+            
+            content.style.color = `var(--${color})`;
+            content.innerHTML = `Você selecionou: <strong>${text}</strong>`;
+            content.style.opacity = '1';
+            
+            menuItems.forEach(mi => mi.classList.remove('active'));
+            item.classList.add('active');
+
+            // Adiciona efeito de ondulação (ripple)
+            const ripple = document.createElement('span');
+            ripple.classList.add('ripple');
+            item.appendChild(ripple);
+
+            const rect = item.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            ripple.style.width = ripple.style.height = `${size}px`;
+
+            const x = event.clientX - rect.left - size / 2;
+            const y = event.clientY - rect.top - size / 2;
+            ripple.style.left = `${x}px`;
+            ripple.style.top = `${y}px`;
+
+            setTimeout(() => {
+                ripple.remove();
+            }, 600);
+        });
+    });
+});
+</script>
+</body></html>

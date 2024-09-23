@@ -3,6 +3,26 @@ document.body.classList.add('dark-mode');
 // Exemplo de carregamento do JSON de emails (emails.json)
 let emailMap = {};
 
+// Função para carregar o menu
+function loadMenu() {
+    fetch('menu.html')  // Carrega o arquivo menu.html
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('menu').innerHTML = data; // Insere o menu no div#menu
+        })
+        .catch(error => console.error('Erro ao carregar o menu:', error));
+}
+
+// Carrega o menu assim que a página for carregada
+window.onload = function() {
+    loadMenu();
+
+    // Depois que o menu carregar, pode iniciar os outros scripts
+    setupChecklist('checklist1');
+    setupChecklist('checklist2');
+};
+
+
 fetch('../assets/json/emails.json')
     .then(response => response.json())
     .then(data => {
