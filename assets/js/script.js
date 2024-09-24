@@ -1,6 +1,6 @@
 // Função para carregar o menu
 function loadMenu() {
-    fetch('pages/menu.html')  // Caminho correto para o arquivo menu.html
+    fetch('pages/menu/menu.html')  // Caminho correto para o arquivo menu.html
 
         .then(response => response.text())
         .then(data => {

@@ -84,12 +84,12 @@ body {
     left: 100%;
 }
 
-.menu-item:nth-child(1) { background-color: var(--primary); }
-.menu-item:nth-child(2) { background-color: var(--secondary); }
-.menu-item:nth-child(3) { background-color: var(--tertiary); }
-.menu-item:nth-child(4) { background-color: var(--quaternary); }
-.menu-item:nth-child(5) { background-color: var(--quinary); }
-.menu-item:nth-child(6) { background-color: var(--senary); }
+.menu-item:nth-child(1) { background-color: var(--senary); }
+.menu-item:nth-child(2) { background-color: var(--quinary); }
+.menu-item:nth-child(3) { background-color: var(--secondary); }
+.menu-item:nth-child(4) { background-color: var(--tertiary); }
+.menu-item:nth-child(5) { background-color: var(--quaternary); }
+.menu-item:nth-child(6) { background-color: var(--quinary); }
 
 .menu-item:hover {
     transform: translateY(-5px);

@@ -6,7 +6,7 @@ let emailMap = {};
 // Função para carregar o menu
 // Função para carregar o menu
 function loadMenu() {
-    fetch('menu.html')  // Carrega o arquivo menu.html
+    fetch('/pages/menu/menu.html')  // Carrega o arquivo menu.html
         .then(response => response.text())
         .then(data => {
             document.getElementById('menu').innerHTML = data; // Insere o menu no div#menu
@@ -29,7 +29,7 @@ window.onload = function() {
 
 
 
-fetch('../assets/json/emails.json')
+fetch('/pages/checklist/json/emails.json')
     .then(response => response.json())
     .then(data => {
         emailMap = data;

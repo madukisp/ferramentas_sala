@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bot de Mensagens para Google Spaces</title>
+    <link rel="stylesheet" href="bot.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <div id="app">
+        <h1>Bot de Mensagens para Google Spaces</h1>
+        
+        <textarea v-model="message" placeholder="Digite sua mensagem aqui..."></textarea>
+        <button @click="sendMessage">Enviar Mensagem</button>
+        
+        <div v-if="status" :class="['status', status.type]">
+            {{ status.message }}
+        </div>
+        
+        <div class="units-container">
+            <div class="unit-section" data-section="capela">
+                <h2 @click="toggleSection('capela')" class="accordion-header">
+                    Grupos das unidades de Capela do Socorro
+                    <i :class="['fas', expanded.capela ? 'fa-chevron-up' : 'fa-chevron-down']"></i>
+                </h2>
+                <div class="unit-list" :class="{ 'expanded': expanded.capela }">
+                    <button @click="selectAllInSection('capela')" class="select-all-btn">Selecionar Todos</button>
+                    <label v-for="(path, unit) in unitsCapela" :key="unit" class="unit-item">
+                        <input type="checkbox" :value="unit" v-model="selectedUnits">
+                        {{ unit }}
+                    </label>
+                </div>
+            </div>
+            
+            <div class="unit-section" data-section="parelheiros">
+                <h2 @click="toggleSection('parelheiros')" class="accordion-header">
+                    Grupos das unidades de Parelheiros
+                    <i :class="['fas', expanded.parelheiros ? 'fa-chevron-up' : 'fa-chevron-down']"></i>
+                </h2>
+                <div class="unit-list" :class="{ 'expanded': expanded.parelheiros }">
+                    <button @click="selectAllInSection('parelheiros')" class="select-all-btn">Selecionar Todos</button>
+                    <label v-for="(path, unit) in unitsParelheiros" :key="unit" class="unit-item">
+                        <input type="checkbox" :value="unit" v-model="selectedUnits">
+                        {{ unit }}
+                    </label>
+                </div>
+            </div>
+
+            <div class="unit-section" data-section="gerentesCapela">
+                <h2 @click="toggleSection('gerentesCapela')" class="accordion-header">
+                    Gerentes de Capela do Socorro
+                    <i :class="['fas', expanded.gerentesCapela ? 'fa-chevron-up' : 'fa-chevron-down']"></i>
+                </h2>
+                <div class="unit-list" :class="{ 'expanded': expanded.gerentesCapela }">
+                    <button @click="selectAllInSection('gerentesCapela')" class="select-all-btn">Selecionar Todos</button>
+                    <label v-for="(path, unit) in unitsGerentesCapela" :key="unit" class="unit-item">
+                        <input type="checkbox" :value="unit" v-model="selectedUnits">
+                        {{ unit }}
+                    </label>
+                </div>
+            </div>
+
+            <div class="unit-section" data-section="gerentesParelheiros">
+                <h2 @click="toggleSection('gerentesParelheiros')" class="accordion-header">
+                    Gerentes de Parelheiros
+                    <i :class="['fas', expanded.gerentesParelheiros ? 'fa-chevron-up' : 'fa-chevron-down']"></i>
+                </h2>
+                <div class="unit-list" :class="{ 'expanded': expanded.gerentesParelheiros }">
+                    <button @click="selectAllInSection('gerentesParelheiros')" class="select-all-btn">Selecionar Todos</button>
+                    <label v-for="(path, unit) in unitsGerentesParelheiros" :key="unit" class="unit-item">
+                        <input type="checkbox" :value="unit" v-model="selectedUnits">
+                        {{ unit }}
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="bot.js"></script>
+</body>
+</html>
