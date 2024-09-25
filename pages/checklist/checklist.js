@@ -57,8 +57,8 @@ function updateSummary() {
     const unchecked1 = document.querySelectorAll('#checklist1 li:not(.checked)').length;
     const unchecked2 = document.querySelectorAll('#checklist2 li:not(.checked)').length;
 
-    document.getElementById('summary1').innerHTML = `Unidades não clicadas: ${unchecked1}`;
-    document.getElementById('summary2').innerHTML = `Unidades não clicadas: ${unchecked2}`;
+    document.getElementById('summary1').innerHTML = `Unidades pendentes: ${unchecked1}`;
+    document.getElementById('summary2').innerHTML = `Unidades pendentes: ${unchecked2}`;
 }
 
 function getUncheckedItems() {
